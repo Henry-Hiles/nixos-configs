@@ -5,12 +5,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
-  # Bootloader.
   boot.loader.grub = {
   	enable = true;
   	device = "/dev/vda";
@@ -22,10 +16,7 @@
     networkmanager.enable = true;
   };
   
-  # Set your time zone.
   time.timeZone = "America/Toronto";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
 
   services = {
@@ -59,9 +50,6 @@
   sound.enable = true;
   security.rtkit.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   hardware = {
   	pulseaudio.enable = false;
   	opengl.driSupport32Bit = true;
@@ -80,7 +68,6 @@
   	'';
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment = {
